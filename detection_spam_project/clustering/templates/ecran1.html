@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} Accueil {% endblock %}
+{% block stepper %}
+    <div class="stepper" id="stepper"></div>
+    <script>
+        $(function(){
+            $("#stepper").stepper();
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <h2>Selection</h2>
+    <p>Affichage de l'écran numéro {{id_screen}}</p>
+{% endblock %}

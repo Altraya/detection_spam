@@ -1,8 +1,8 @@
 #-*- coding: utf-8 -*-
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.shortcuts import render
 
-def home(request):
+def home2(request):
 	"""Test"""
 	text = """ <h1> Welcome home ! </h1>
 				<p>
@@ -11,6 +11,14 @@ def home(request):
 			"""
 	return HttpResponse(text)
 
+def home(request):
+	return render(request,'home.html')
+
+
 def view_screen(request, id_screen):
-	text = "affichage de l'écran numéro #{0} ! ".format(id_screen)
-	return HttpResponse(text)
+	if int(id_screen) > 3:
+		raise Http404
+
+	"""text = "affichage de l'écran numéro #{0} ! ".format(id_screen)
+	return HttpResponse(text)"""
+	return render(request, 'ecran1.html', {'id_screen': id_screen})

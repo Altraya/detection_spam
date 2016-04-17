@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Ma page d'accueil{% endblock %}
+{% block content %}
+    <h2>Bienvenue !</h2>
+    <p>
+       Cette application est un projet d'intelligence artificielle de Licence 3 d'informatique.<br/>
+       Pour continuer <a href="{% url "clustering.views.view_screen" 1 %}">cliquez ici</a>
+    </p>
+{% endblock %}

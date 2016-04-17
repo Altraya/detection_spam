@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			{% block title %}
+				Clustering - 
+			{% endblock %}
+		</title>
+		{% block css %}
+			{% load static %}
+			<link rel="stylesheet" href="{% static 'css/metro.min.css' %}" />
+		{% endblock %}
+
+		{% block js%}
+			{% load static %}
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+    		<script src="{% static 'js/metro.min.js' %}"></script>
+		{% endblock %}
+	</head>
+	<body>
+		<nav>
+			{% block nav %}
+				
+			{% endblock %}
+		</nav>
+
+		<section id="content">
+			<section id="stepper">
+				{% block stepper %}
+					
+				{% endblock %}
+			</section>
+			{% block content %}
+
+			{% endblock %}
+		</section>
+	</body>
+	<footer>
+		{% block footer %}
+
+		{% endblock %}
+	</footer>
+</html>
