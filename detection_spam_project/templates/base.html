@@ -9,6 +9,8 @@
 		{% block css %}
 			{% load static %}
 			<link rel="stylesheet" href="{% static 'css/metro.min.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/metro-icons.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 		{% endblock %}
 
 		{% block js%}
@@ -18,22 +20,28 @@
 		{% endblock %}
 	</head>
 	<body>
-		<nav>
-			{% block nav %}
-				
-			{% endblock %}
-		</nav>
-
-		<section id="content">
-			<section id="stepper">
-				{% block stepper %}
+		<div class="margin20">
+			<nav>
+				{% block nav %}
 					
 				{% endblock %}
-			</section>
-			{% block content %}
+			</nav>
 
-			{% endblock %}
-		</section>
+			<section id="content">
+				<div class="container">
+
+					{% block stepper %}
+
+					{% endblock %}
+				
+					{% block content %}
+						
+
+					{% endblock %}
+				
+				</div>
+			</section>
+		</div>
 	</body>
 	<footer>
 		{% block footer %}

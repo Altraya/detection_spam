@@ -1,0 +1,9 @@
+.flexi
+{
+	display: inline-flex;
+}
+
+.right
+{
+	float: right;
+}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ block.super }} Accueil {% endblock %}
 {% block stepper %}
-    <div class="stepper" id="stepper"></div>
+    <div class="stepper diamond" id="stepper"></div>
     <script>
         $(function(){
             $("#stepper").stepper();
@@ -10,6 +10,70 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Selection</h2>
-    <p>Affichage de l'écran numéro {{id_screen}}</p>
+	<div class="row cells1">
+		<div class="cell">
+		    <h2>Selection</h2>
+		    <p>Affichage de l'écran numéro {{id_screen}}</p>
+		    <div id="info">
+		    	<div class="panel">
+				    <div class="heading">
+				        <span class="title">Informations</span>
+				    </div>
+				    <div class="content padding20">
+				        La classification se fait en mode non supervisée sur la base de fichiers de logs.<br/>
+
+				        Une fonction permet l’extraction de K classes de comportement (K en paramètre)<br/>
+
+				        Une fonction permet d’extraction des N% de comportements les plus en marge de chaque classe, dans un ordre de distance décroissante
+						pour la classe (N/100 en paramètre)<br/>
+				    </div>
+				</div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="row cells1">
+		<div class="cell">
+		    <form>
+
+				<div class="row cells1">
+					<div class="cell">
+		    			<div class="input-control file" data-role="input">
+			    			<input type="file">
+				    		<button class="button">
+				    			<span class="mif-folder"></span>
+				    		</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row cells2 flexi">
+					<div class="cell">
+						<div class="input-control text">
+						    <input type="text" placeholder="Choose n observations ...">
+						</div>
+					</div>
+					<div class="cell">
+						<div class="input-control text">
+						    <input type="text" placeholder="... into k clusters">
+						</div>
+					</div>
+				</div>
+
+				<div class="row cells1">
+					<div class="cell">
+						<p>@TODO : Choix des champs utilisés pour la classification </p>
+
+					</div>
+				</div>
+
+				<div class="row cells1">
+					<div class="cell">
+					<input class="success right" type="button" value="Go to the next step !">
+					</div>
+				</div>
+
+		    </form>
+		</div>
+	</div>
 {% endblock %}
