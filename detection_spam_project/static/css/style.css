@@ -7,3 +7,13 @@
 {
 	float: right;
 }
+
+.margin10Right
+{
+	margin-right: 10px !important;
+}
+
+.height100
+{
+	height: 100px;
+}

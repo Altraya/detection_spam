@@ -23,11 +23,18 @@
 
 		</div>
 
-		<div class="row cells1">
+		<div class="row cells2">
+			
 			<div class="cell">
-			<a href="{% url "clustering.views.view_screen" 3 %}">
-				<input class="success right" type="button" value="Go to the next step !">
-			</a>
+				<a href="{% url "clustering.views.view_screen" 3 %}">
+					<input class="success right" type="button" value="Go to the next step !">
+				</a>
+			</div>
+
+			<div class="cell">
+				<a href="{% url "clustering.views.view_screen" 1 %}">
+					<input class="margin10Right right" type="button" value="Return to step 1">
+				</a>
 			</div>
 		</div>
 	</div>
