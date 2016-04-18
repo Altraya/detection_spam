@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}{{ block.super }} Accueil {% endblock %}
+{% block title %}{{ block.super }} Choix des données {% endblock %}
 {% block stepper %}
     <div class="stepper diamond" id="stepper"></div>
     <script>
@@ -69,7 +69,9 @@
 
 				<div class="row cells1">
 					<div class="cell">
-					<input class="success right" type="button" value="Go to the next step !">
+					<a href="{% url "clustering.views.view_screen" 2 %}">
+						<input class="success right" type="button" value="Go to the next step !">
+					</a>
 					</div>
 				</div>
 

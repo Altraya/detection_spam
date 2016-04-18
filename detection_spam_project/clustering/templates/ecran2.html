@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ block.super }} Affichage statistique {% endblock %}
+{% block stepper %}
+    <div class="stepper diamond" id="stepper"></div>
+    <script>
+        $(function(){
+            $("#stepper").stepper();
+            
+        });
+
+        $(document).ready(function(){
+        	$("#stepper").stepper('stepTo',2);
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+	<div class="row cells1">
+		<div class="cell">
+		    <h2>Selection</h2>
+		    <p>Affichage de l'écran numéro {{id_screen}}</p>
+		    
+
+		</div>
+
+		<div class="row cells1">
+			<div class="cell">
+			<a href="{% url "clustering.views.view_screen" 3 %}">
+				<input class="success right" type="button" value="Go to the next step !">
+			</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

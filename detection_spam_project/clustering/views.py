@@ -21,4 +21,5 @@ def view_screen(request, id_screen):
 
 	"""text = "affichage de l'écran numéro #{0} ! ".format(id_screen)
 	return HttpResponse(text)"""
-	return render(request, 'ecran1.html', {'id_screen': id_screen})
+
+	return render(request, 'ecran'+id_screen+'.html', {'id_screen': id_screen})
