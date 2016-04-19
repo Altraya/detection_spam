@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 def view_screen(request):
 
-	return render(request, 'ecran2.html', {'id_screen' : 2})
+	return render(request, 'ecran2.html', {'id_screen': 2})

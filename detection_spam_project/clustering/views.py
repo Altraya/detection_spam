@@ -1,7 +1,6 @@
 #-*- coding: utf-8 -*-
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
-from clustering.form import ScreenOneForm
 import ecran1
 import ecran2
 import ecran3
@@ -32,7 +31,6 @@ def view_screen(request, id_screen):
 	else:
 		raise Http404
 	
-
 """
 def show(request):
 	if request.method == 'POST':
@@ -47,3 +45,5 @@ def show(request):
 	return render(request, 'testEcran2.html', locals())
 
 """
+	return render(request, 'ecran'+id_screen+'.html', {'id_screen' : id_screen})
+
