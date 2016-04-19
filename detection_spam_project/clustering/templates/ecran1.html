@@ -39,7 +39,7 @@
 				<div class="row cells1">
 					<div class="cell">
 		    			<div class="input-control file" data-role="input">
-			    			<input type="file">
+			    			<input type="file" id="fichierData">
 				    		<button class="button">
 				    			<span class="mif-folder"></span>
 				    		</button>
@@ -49,20 +49,29 @@
 
 				<div class="row cells2 flexi">
 					<div class="cell">
+						<!--
 						<div class="input-control text">
-						    <input type="text" placeholder="Choose n observations ...">
+						    <input type="text" placeholder="Choose n observations ..." id="n">
 						</div>
+						-->
+						{{ form.n }}
 					</div>
 					<div class="cell">
+						<!--
 						<div class="input-control text">
-						    <input type="text" placeholder="... into k clusters">
+						    <input type="text" placeholder="... into k clusters" id="k">
 						</div>
+						-->
+						{{ form.k }}
 					</div>
 				</div>
 
 				<div class="row cells1">
 					<div class="cell">
+
+					<!--
 						<label for="choixClassification">Choix de classification (vous pouvez choisir plusieurs champs)</label>
+
 						<div class="input-control select multiple full-size height100" id="choixClassification">
 						    <select multiple>
 						        <option>1 - word_freq_make</option>         
@@ -124,14 +133,13 @@
 								<option>57 - capital_run_length_total</option>
 						    </select>
 						</div>
+					-->
+					{{ form.champsClassification }}
 					</div>
 				</div>
 
 				<div class="row cells1">
 					<div class="cell">
-
-						
-    					
 						<input type="submit" class="success right" type="button" value="Go to the next step !">
 				
 					</div>

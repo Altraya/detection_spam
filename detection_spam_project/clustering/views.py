@@ -2,7 +2,9 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from clustering.form import ScreenOneForm
-from pprint import pprint
+import ecran1
+import ecran2
+import ecran3
 
 def home2(request):
 	"""Test"""
@@ -18,7 +20,30 @@ def home(request):
 
 
 def view_screen(request, id_screen):
-	if int(id_screen) > 3:
-		raise Http404
+	intID = int(id_screen)
 
-	return render(request, 'ecran'+id_screen+'.html', {'id_screen' : id_screen})
+	if intID == 1:
+		#return render(request, 'ecran'+id_screen+'.html', {'id_screen': id_screen})
+		return ecran1.view_screen(request)
+	elif intID == 2:
+		return ecran2.view_screen(request)
+	elif intID == 3:
+		return ecran3.view_screen(request)	
+	else:
+		raise Http404
+	
+
+"""
+def show(request):
+	if request.method == 'POST':
+		form = ScreenOneForm(request.POST)
+
+		if form.is_valid():
+			choixClassification = form.cleaned_data['choixClassification'];
+
+		else: 
+			form = ScreenOneForm()
+
+	return render(request, 'testEcran2.html', locals())
+
+"""
