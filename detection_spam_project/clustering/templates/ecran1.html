@@ -35,16 +35,19 @@
 		<div class="cell">
 			{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-		    <form action="{% url "clustering.views.view_screen" 2 %}" method="POST"  enctype="multipart/form-data" > {% csrf_token %}
+		    <form action="{% url "clustering.views.view_screen" 2 %}" method="POST" enctype="multipart/form-data"> {% csrf_token %}
 
 				<div class="row cells1">
 					<div class="cell">
+						{{ form.fichierData }}
+					<!--
 		    			<div class="input-control file" data-role="input">
 			    			<input type="file" id="fichierData">
 				    		<button class="button">
 				    			<span class="mif-folder"></span>
 				    		</button>
 						</div>
+					-->
 					</div>
 				</div>
 

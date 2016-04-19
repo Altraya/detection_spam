@@ -10,21 +10,33 @@ def view_screen(request):
 		form = ScreenOneForm(request.POST, request.FILES)
 		#on a ici toutes les données de l'écran 1 obtenu via POST
 		#on doit traiter les champs demandés via l'id de la colonne obtenu sur champClassification
-		print form.is_valid(), form.errors, type(form.errors)
+		#print form.is_valid(), form.errors, type(form.errors)
 		if form.is_valid():
-			fichier = request.FILES['file']
+			fichier = request.FILES['fichierData']
 			print "fichier : "
 			print fichier
+			#ici on peut travailler sur notre fichier
+			idColumns = []
+			idColumns = request.POST.getlist('choixClassification[]')
+
+			print idColumns
+			#normalisation
+			resulNormalize = normalizeMe(idColumns, fichier)
+
 			return render(request, 'ecran2.html', {'id_screen': 2})
 
 		else:
-			# formulaire faux on retourne le remplir
-			print "nope"
-			return render(request, 'ecran2.html', {'id_screen': 2})
-
-			#return render(request, ecran1.view_screen);
+			#a traiter quand le formulaire n'est pas valide
+			return render(request, 'ecran2.html', {'id_screen': 1})
 
 	else: #si on a pas bien valider le formulaire, on retourne sur l'ecran 1 pour le faire
-		print "note P"
 		return render(request, 'ecran1.html', {'id_screen': 1}) 
 
+"""
+	normalize les champs dont le numero de colonne est donné 
+	en paramètre dans le fichier donné en parametre et 
+	retourne un tableau contenant les tableaux de resultats
+"""
+def normalizeMe(params, fichier):
+
+	return "oui"
