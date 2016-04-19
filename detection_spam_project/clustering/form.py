@@ -2,7 +2,7 @@ from django import forms
 
 class ScreenOneForm(forms.Form):
 
-	databaseFile = forms.FileField(required=True)
+	fichierData = forms.FileField(required=True)
 	n = forms.CharField(label="Choose n observations", 
 		required = True, 
 		widget=forms.TextInput(attrs={'class': 'input-control text', 'placeholder': 'Choose n observations'}))

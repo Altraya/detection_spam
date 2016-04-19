@@ -33,7 +33,9 @@
 
 	<div class="row cells1">
 		<div class="cell">
-		    <form action="{% url "clustering.views.view_screen" 2 %}" method="POST"> {% csrf_token %}
+			{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+		    <form action="{% url "clustering.views.view_screen" 2 %}" method="POST"  enctype="multipart/form-data" > {% csrf_token %}
 
 				<div class="row cells1">
 					<div class="cell">
