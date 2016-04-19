@@ -34,7 +34,7 @@
 
 	<div class="row cells1">
 		<div class="cell">
-		    <form>
+		    <form action="{% url "clustering.views.view_screen" 2 %}" method="POST"> {% csrf_token %}
 
 				<div class="row cells1">
 					<div class="cell">
@@ -129,9 +129,11 @@
 
 				<div class="row cells1">
 					<div class="cell">
-					<a href="{% url "clustering.views.view_screen" 2 %}">
-						<input class="success right" type="button" value="Go to the next step !">
-					</a>
+
+						
+    					
+						<input type="submit" class="success right" type="button" value="Go to the next step !">
+				
 					</div>
 				</div>
 
