@@ -45,5 +45,3 @@ def show(request):
 	return render(request, 'testEcran2.html', locals())
 
 """
-	return render(request, 'ecran'+id_screen+'.html', {'id_screen' : id_screen})
-
