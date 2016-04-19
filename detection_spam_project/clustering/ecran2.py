@@ -16,9 +16,9 @@ def view_screen(request):
 			print "fichier : "
 			print fichier
 			#ici on peut travailler sur notre fichier
-			idColumns = []
-			idColumns = request.POST.getlist('choixClassification[]')
-
+			#idColumns = []
+			idColumns = request.POST.getlist('champsClassification')
+			print "idColumns : "
 			print idColumns
 			#normalisation
 			resulNormalize = normalizeMe(idColumns, fichier)
