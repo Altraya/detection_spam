@@ -43,48 +43,30 @@ def normalizeMe(params, fichier):
 	# [ 3.72 ] [1] 
 	print params
 
-	currentLine = []
-	matrix = []
-	data = []
-	test = []
-	#ouverture fichier
+	linesWithDefaut = [] #line avec des \n
+	matrixWithDefaut = []
+
+	#Remplit matrix par chaque ligne
 	for line in fichier.readlines():
-		currentLine = line.split(",")
-		#on doit rstrip toutes les infos de cette liste pour ne pas avoir de \n
-		#il faut donc la parcourrir et les enlever
-		for number in currentLine:
-			number.rstrip()
-			matrix.append(number)
-	#test = data.readlines()
-	#print number
-	#print matrix
+		linesWithDefaut = line.split(",")
+		matrixWithDefaut.append(linesWithDefaut)
 
-
+	#on doit rstrip toutes les infos de cette liste pour ne pas avoir de \n
+	#il faut donc la parcourrir et les enlever	
+	#enleve dans chaque ligne remplit precedemment les \n
+	for linesWithDefaut in matrixWithDefaut:
+		for index, number in enumerate(linesWithDefaut):
+			linesWithDefaut[index] = number.rstrip()
+		
+	#now matrixWithDefaut is a matrix without defaut o/
+	#this matrix contain lines of files
+	#we need now to search columns we need for next step
 	
-	#i = 0 #index les lignes vont jusqu'a 57
-	#line = data.split(",")
+
+			
 
 
 
-	print "matrix = " + str(matrix)
-	#for eachNumber in line:
-		#print line
-		#print eachNumber
-		#if "\n" in line:
-			#print "\n trouvé"
-			#gaucheEtDroite = line.split('\n')
-			#print gaucheEtDroite
-	"""reader = csv.reader(data)
-
-	for row in reader:
-		print row
-			#row[i] = (float(row[i]) - minArr[i])
-
-	print yeah"""
-
-	#print data
-	#print ""
-	#print line
 
 	#cherche toutes les colonnes correspondantes et crée un tableau a la volée contenant les valeurs de chaque colonne
 
