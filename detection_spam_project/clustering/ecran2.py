@@ -67,32 +67,27 @@ def normalizeMe(params, fichier):
 	#params contient les valeurs des indices des champs de classification que l'on veut
 	#sous forme [u'2', u'3'] par exemple pour les champs 2 et 3
 
-	print matrixWithDefaut
-
+	column = []
+	columns = []
+	indiceClassification = []
 	
 	size = len(params)
-	#print size
 
 	for i in range (size) :
-		print params[i]
+		indiceClassification.append(params[i])
 
 
-
-
-
-	#for index, indiceClassification in enumerate(params):
-		#listIndice.append(indiceClassification.split("\'"))
-
-#	print "listIndice "
-#	print listIndice
-	
 	#cherche toutes les colonnes correspondantes et crée un tableau a la volée contenant les valeurs de chaque colonne
+	for currentIndice in indiceClassification:
+		for lines in matrixWithDefaut:
+			for index, number in enumerate(lines):
+				
+				if int(currentIndice) == int(index):
+					column.append(lines[index-1]) #dans le tableau indice a partir de 0 o/
+		columns.append(column)
+		column = []
 
-	#for lines in matrixWithDefaut.readlines() :
-	#	for i in range
-
-
-
+	print columns
 	#normalise chaque colonne
 
 	#retourne le resultat
