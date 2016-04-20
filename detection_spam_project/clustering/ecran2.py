@@ -6,6 +6,8 @@ import ecran1
 import csv
 import re
 
+
+
 def view_screen(request):
 
 	if request.method == 'POST': #just work in screen 2 and 3
@@ -61,14 +63,35 @@ def normalizeMe(params, fichier):
 	#now matrixWithDefaut is a matrix without defaut o/
 	#this matrix contain lines of files
 	#we need now to search columns we need for next step
+
+	#params contient les valeurs des indices des champs de classification que l'on veut
+	#sous forme [u'2', u'3'] par exemple pour les champs 2 et 3
+
+	print matrixWithDefaut
+
 	
+	size = len(params)
+	#print size
 
-			
+	for i in range (size) :
+		print params[i]
 
 
 
 
+
+	#for index, indiceClassification in enumerate(params):
+		#listIndice.append(indiceClassification.split("\'"))
+
+#	print "listIndice "
+#	print listIndice
+	
 	#cherche toutes les colonnes correspondantes et crée un tableau a la volée contenant les valeurs de chaque colonne
+
+	#for lines in matrixWithDefaut.readlines() :
+	#	for i in range
+
+
 
 	#normalise chaque colonne
 
