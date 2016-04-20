@@ -83,12 +83,42 @@ def normalizeMe(params, fichier):
 			for index, number in enumerate(lines):
 				
 				if int(currentIndice) == int(index):
-					column.append(lines[index-1]) #dans le tableau indice a partir de 0 o/
+					column.append(float(lines[index-1])) #dans le tableau indice a partir de 0 o/
 		columns.append(column)
 		column = []
 
-	print columns
+	saveColumnBeforeNormalize = columns
+	print saveColumnBeforeNormalize
+
 	#normalise chaque colonne
 
+	for column in columns:
+		minColumn = min(column)
+		print minColumn
+		maxColumn = max(column)
+		print maxColumn
+		for index, row in enumerate(column):
+			diviseur = maxColumn - minColumn
+			if diviseur == 0:
+				#si on a le diviseur qui vaut 0 ca veut dire que toute la ligne vaut 0 donc row = 0
+				row = 0.00
+				
+			else:
+				numerateur = float(row) - minColumn
+				row = numerateur / diviseur
+		#@todo
+		normalizedColumn = []
+	print column
+			#print row
+			#print column
+			#print "max de column : "+str(max(column))
+			#print "min de column : "+str(min(column))
+			#print "row avant : " + str(row)
+			#diviseur = float(max(column)) - float(min(column))
+			#devant = (float(row) - float(min(column)))
+			#row =  devant / diviseur
+			#print "calcul : "+str(devant)+" / "+str(diviseur)+" = "+str(row)
 	#retourne le resultat
+
+	
 	return "oui"
