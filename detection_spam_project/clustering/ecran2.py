@@ -42,9 +42,6 @@ def view_screen(request):
 """
 def normalizeMe(params, fichier):
 
-	# [ 3.72 ] [1] 
-	print(params)
-
 	linesWithDefaut = [] #line avec des \n
 	matrixWithDefaut = []
 
@@ -70,6 +67,8 @@ def normalizeMe(params, fichier):
 	column = []
 	columns = []
 	indiceClassification = []
+	normalizedColumn = []
+	normalizedColumns = []
 	
 	size = len(params)
 
@@ -87,16 +86,12 @@ def normalizeMe(params, fichier):
 		columns.append(column)
 		column = []
 
-	saveColumnBeforeNormalize = columns
-	print(saveColumnBeforeNormalize)
-
 	#normalise chaque colonne
 
 	for column in columns:
 		minColumn = min(column)
-		print(minColumn)
 		maxColumn = max(column)
-		print(maxColumn)
+
 		for index, row in enumerate(column):
 			diviseur = maxColumn - minColumn
 			if diviseur == 0:
@@ -106,19 +101,12 @@ def normalizeMe(params, fichier):
 			else:
 				numerateur = float(row) - minColumn
 				row = numerateur / diviseur
-		#@todo
+		
+			normalizedColumn.append(row)
+		normalizedColumns.append(normalizedColumn)
 		normalizedColumn = []
-	print(column)
-			#print row
-			#print column
-			#print "max de column : "+str(max(column))
-			#print "min de column : "+str(min(column))
-			#print "row avant : " + str(row)
-			#diviseur = float(max(column)) - float(min(column))
-			#devant = (float(row) - float(min(column)))
-			#row =  devant / diviseur
-			#print "calcul : "+str(devant)+" / "+str(diviseur)+" = "+str(row)
+		#@todo
+		
+	#print(normalizedColumns)
 	#retourne le resultat
-
-	
-	return "oui"
+	return normalizedColumns 
