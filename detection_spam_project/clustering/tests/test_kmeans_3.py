@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 '''
 Created on 21 april 2016
 
@@ -10,6 +10,7 @@ from clustering.tests.normalizer import Normalizer
 import clustering.kmeans.kmeans_clusterer as km
 from django.test import TestCase
 from test.inspect_fodder import spam
+import math
 
 
 class Test(TestCase):
@@ -34,11 +35,14 @@ class Test(TestCase):
         kmeancl.performClustering()
         
         for i in range(k):
-            print("Cluster "+str(1)+": ")
             cluster = kmeancl.getCluster(i)
-            mostDeviant = cluster.getMostDeviantObservations()
-            for observation in mostDeviant:
-                print("    "+str(km.computeDistance(observation, cluster.getCentroid())))
+            percentToExtract = 10
+            mostDeviant = cluster.getMostDeviantObservations(percentToExtract)
+            # ensure that we got the expected number of observations
+            expectedDeviants = max(math.floor(len(cluster.getObservations()) / percentToExtract), 1)
+            
+            self.assertTrue(len(mostDeviant) == expectedDeviants, "Expected " + str(expectedDeviants)
+                                + " values, only received " + str(len(mostDeviant)))
             
             
     

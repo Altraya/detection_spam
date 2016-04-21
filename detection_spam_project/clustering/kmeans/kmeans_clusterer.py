@@ -110,20 +110,17 @@ class Cluster(object):
 
     def getMostDeviantObservations(self, n = 10):
         # computing number of observations to extract
-        to_ex = 0
-        if len(self.observations) < n:
-            to_ex = len(self.observations)
-        else:
-            to_ex = n
-                    
-        nbObs = len(self.observations)
-        nbObs2e = floor(nbObs/to_ex)
-        print(str(nbObs2e)+" observations to extract.")
+        # no observations assigned
+        if self.observations == []:
+            return []
+        
+        to_ex = max(floor(len(self.observations)/n), 1)
+        print(str(to_ex)+" observations to extract.")
         
         sorted_obs = sorted(self.observations, key= lambda obs : self.distanceToCentroid(obs))
-        deviants = [self.observations[n] for n in range(nbObs2e)]
+        deviants = [self.observations[n] for n in range(to_ex)]
         return deviants
-             
+                 
     def distanceToCentroid(self, obs):
         return computeDistance(self.centroid, obs)     
 
