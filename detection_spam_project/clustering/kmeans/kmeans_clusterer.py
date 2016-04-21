@@ -1,3 +1,5 @@
+#-*- coding: utf-8 -*-
+
 '''
 Created on 8 avr. 2016
 
@@ -6,12 +8,14 @@ Created on 8 avr. 2016
 
 from random import Random
 from math import sqrt
+from builtins import False
 
-class KMeanClusterer(object):
+class KMeanClusterer(object):    
     def __init__(self, k, data):
         self.k = k
         self.data = data
         self.clusters = []
+        self.converged = False
         samples = set()
         randy = Random()
         
@@ -42,16 +46,18 @@ class KMeanClusterer(object):
             diffs[i] = oldCentroids[i] == newCentroids[i]
         
         if False in diffs:
-            self.performClustering()    
+            self.performClustering()
+        else:
+            self.converged = True
         
     def assignment(self):
         for cluster in self.clusters:
             cluster.resetObservations()
         for row in self.data:
             closestCluster = self.clusters[0]
-            smallestDistance = self.computeDistance(row, closestCluster.getCentroid())
+            smallestDistance = computeDistance(row, closestCluster.getCentroid())
             for cluster in self.clusters:
-                distance = self.computeDistance(row, cluster.getCentroid())
+                distance = computeDistance(row, cluster.getCentroid())
                 if(distance < smallestDistance):
                     smallestDistance = distance
                     closestCluster = cluster
@@ -75,23 +81,13 @@ class KMeanClusterer(object):
                 except TypeError:
                     pass # same
             cluster.centroid = means
-            
-            
+                    
     def getClusterNumber(self):
         return self.k
     
     def getCluster(self, i):
         return self.clusters[i]
-    
-    def computeDistance(self, observation, centroid):
-        temp = 0
-        for i in range(len(observation)):
-            try:
-                temp += pow(observation[i] - centroid[i], 2)
-            except TypeError:
-                pass
-        return sqrt(temp)
-    
+   
 class Cluster(object):
     def __init__(self, nbDimensions, sample):
         self.nbDimensions = nbDimensions
@@ -99,9 +95,10 @@ class Cluster(object):
         self.observations = []
         for i in range(len(sample)-1):
             self.centroid[i] = sample[i]
+ 
     def getCentroid(self):
         return self.centroid
-    
+
     def addObservation(self, observation):
         self.observations.append(observation)
         
@@ -110,3 +107,36 @@ class Cluster(object):
     
     def resetObservations(self):
         self.observations = []
+  
+# Euclidian distance between to same-length arrays      
+
+#     def extractMostDeviant(self, n = 10):
+#         # computing number of observations to extract
+#         nbObs = len(self.observations)
+#         nbObs2e = nbObs/n
+#         
+#         deviants = [0] * n
+#         distances
+#         
+#         for i in range(nbObs):
+#             inserted = False
+#             j = 0
+#             while not inserted and j < n:
+#                 if computeDistance(self.centroid, self.observations[i])     
+        
+        
+
+def computeDistance(vector1, vector2):
+    temp = 0.0
+    
+    v1l = len(vector1)
+    v2l = len(vector2)
+    if v1l != v2l:
+        return -1
+    
+    for i in range(len(vector1)):
+        try:
+            temp += pow(vector1[i] - vector2[i], 2)
+        except TypeError:
+            pass
+    return sqrt(temp)

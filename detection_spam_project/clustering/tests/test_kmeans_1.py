@@ -1,17 +1,18 @@
+#-*- coding: utf-8 -*-
 '''
 Created on 24 mars 2015
 
 @author: Pierre.Parrend
 '''
 import unittest
-import os
 
 from clustering.kmeans.kmeans_clusterer import KMeanClusterer
+import clustering.kmeans.kmeans_clusterer as km
 from clustering.tests.normalizer import Normalizer
+from django.test import TestCase
 
 
-class Test(unittest.TestCase):
-
+class Test(TestCase):
 
     def setUp(self):
         pass
@@ -97,14 +98,10 @@ class Test(unittest.TestCase):
         for i in range(clusterNumber):
             currentCluster = kMeanClusterer.getCluster(i)
             for obs in currentCluster.getObservations():
-                distance_to_centroid = kMeanClusterer.computeDistance(obs, currentCluster.getCentroid())
+                distance_to_centroid = km.computeDistance(obs, currentCluster.getCentroid())
                 for j in range(len(centroids)):
                     if i != j:
-                        dst = kMeanClusterer.computeDistance(obs, kMeanClusterer.getCluster(j).getCentroid())
+                        dst = km.computeDistance(obs, kMeanClusterer.getCluster(j).getCentroid())
                         self.assertTrue(distance_to_centroid <= dst,
                                         "distance to centroid of own cluster " + str(i) + ":"
                                         + str(distance_to_centroid) + "; distance to centroid of cluster" + str(j) + ": " + str(dst))
-        
-
-if __name__ == "__main__":
-    unittest.main()
