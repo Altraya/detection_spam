@@ -45,10 +45,13 @@
 			        </tr>
 			    </thead>
 			    <tbody>
-			    	{% for name in nameColumns %}
+			    	{% for stats in objetsStats %}
 				        <tr>
-				        	<td>{{ name }}</td>
-				        	
+				        	<td>{{ stats.nom }}</td>
+				        	<td>{{ stats.minS }}</td>
+				        	<td>{{ stats.maxS }}</td>
+				        	<td>{{ stats.moyenne }}</td>
+				        	<td>{{ stats.ecart_type }}</td>
 				        </tr>
 			        {% endfor %}
 							    	

@@ -2,6 +2,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from clustering.form import ScreenOneForm
+from clustering.modelStatic import Stats
 from . import ecran1
 import csv
 import re
@@ -17,16 +18,15 @@ def view_screen(request):
 		#print form.is_valid(), form.errors, type(form.errors)
 		if form.is_valid():
 			fichier = request.FILES['fichierData']
-			print("fichier : ")
-			print(fichier)
 			#ici on peut travailler sur notre fichier
 			idColumns = request.POST.getlist('champsClassification')
 			tabNameColumns = matchNameColumn(idColumns)
 			#normalisation
 			resultNormalize = normalizeMe(idColumns, fichier)
-
-			print tabNameColumns
-			return render(request, 'ecran2.html', {'id_screen': 2, 'nameColumns' : tabNameColumns})
+			#tableau contenant des objets Stats pour pouvoir remplir correctement la vue
+			tabObjectStats = matchStats(resultNormalize, tabNameColumns)
+		
+			return render(request, 'ecran2.html', {'id_screen': 2, 'objetsStats' : tabObjectStats})
 
 	else: #si on a pas bien valider le formulaire, on retourne sur l'ecran 1 pour le faire
 		return render(request, 'ecran1.html', {'id_screen': 1}) 
@@ -107,7 +107,6 @@ def normalizeMe(params, fichier):
 	#print(normalizedColumns)
 	#retourne le resultat
 
-	#@todo : finir l'objet stat puis retourner un tableau d'objet stat pour directement pouvoir l'afficher dans la vue
 	return normalizedColumns 
 
 #
@@ -185,3 +184,29 @@ def matchNameColumn(idColumns):
 				tabNameColumns.append(choice[1])
 			
 	return tabNameColumns
+
+#
+# Permet de remplir des objets stats avec toutes les stats que l'on souhaite pour notre vue
+# grace a nos champs normalises
+# @params : normalizedColumns toutes nos colonnes normalisees grace a normalizeMe
+# @return : un tableau contenant des objets stats remplit
+#
+def matchStats(normalizedColumns, tabNameColumns):
+	tabObjectStats = []
+	for index, normalizedColumn in enumerate(normalizedColumns):
+		currentStat = Stats(index, normalizedColumn)
+		tabObjectStats.append(currentStat)
+
+	for index, objectStat in enumerate(tabObjectStats):
+		objectStat._set_nom(tabNameColumns[index])
+
+	return tabObjectStats
+		#print "min S : "
+		#print(currentStat.minS)
+		#print "max s :"
+		#print(currentStat.maxS)
+		#print "moyenne : "
+		#print(currentStat.moyenne)
+		#print "ecart_type"
+		#print(currentStat.ecart_type)
+
