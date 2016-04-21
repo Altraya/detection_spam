@@ -7,8 +7,8 @@ Created on 8 avr. 2016
 '''
 
 from random import Random
-from math import sqrt
-from builtins import False
+from math import sqrt, floor
+
 
 class KMeanClusterer(object):    
     def __init__(self, k, data):
@@ -106,25 +106,26 @@ class Cluster(object):
         return self.observations
     
     def resetObservations(self):
-        self.observations = []
-  
-# Euclidian distance between to same-length arrays      
+        self.observations = [] 
 
-#     def extractMostDeviant(self, n = 10):
-#         # computing number of observations to extract
-#         nbObs = len(self.observations)
-#         nbObs2e = nbObs/n
-#         
-#         deviants = [0] * n
-#         distances
-#         
-#         for i in range(nbObs):
-#             inserted = False
-#             j = 0
-#             while not inserted and j < n:
-#                 if computeDistance(self.centroid, self.observations[i])     
+    def getMostDeviantObservations(self, n = 10):
+        # computing number of observations to extract
+        to_ex = 0
+        if len(self.observations) < n:
+            to_ex = len(self.observations)
+        else:
+            to_ex = n
+                    
+        nbObs = len(self.observations)
+        nbObs2e = floor(nbObs/to_ex)
+        print(str(nbObs2e)+" observations to extract.")
         
-        
+        sorted_obs = sorted(self.observations, key= lambda obs : self.distanceToCentroid(obs))
+        deviants = [self.observations[n] for n in range(nbObs2e)]
+        return deviants
+             
+    def distanceToCentroid(self, obs):
+        return computeDistance(self.centroid, obs)     
 
 def computeDistance(vector1, vector2):
     temp = 0.0
