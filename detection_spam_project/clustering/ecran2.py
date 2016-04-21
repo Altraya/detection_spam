@@ -2,7 +2,7 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, redirect
 from clustering.form import ScreenOneForm
-import ecran1
+from . import ecran1
 import csv
 import re
 
@@ -17,8 +17,8 @@ def view_screen(request):
 		#print form.is_valid(), form.errors, type(form.errors)
 		if form.is_valid():
 			fichier = request.FILES['fichierData']
-			print "fichier : "
-			print fichier
+			print("fichier : ")
+			print(fichier)
 			#ici on peut travailler sur notre fichier
 			#idColumns = []
 			idColumns = request.POST.getlist('champsClassification')
@@ -43,7 +43,7 @@ def view_screen(request):
 def normalizeMe(params, fichier):
 
 	# [ 3.72 ] [1] 
-	print params
+	print(params)
 
 	linesWithDefaut = [] #line avec des \n
 	matrixWithDefaut = []
@@ -88,15 +88,15 @@ def normalizeMe(params, fichier):
 		column = []
 
 	saveColumnBeforeNormalize = columns
-	print saveColumnBeforeNormalize
+	print(saveColumnBeforeNormalize)
 
 	#normalise chaque colonne
 
 	for column in columns:
 		minColumn = min(column)
-		print minColumn
+		print(minColumn)
 		maxColumn = max(column)
-		print maxColumn
+		print(maxColumn)
 		for index, row in enumerate(column):
 			diviseur = maxColumn - minColumn
 			if diviseur == 0:
@@ -108,7 +108,7 @@ def normalizeMe(params, fichier):
 				row = numerateur / diviseur
 		#@todo
 		normalizedColumn = []
-	print column
+	print(column)
 			#print row
 			#print column
 			#print "max de column : "+str(max(column))

@@ -1,9 +1,9 @@
 #-*- coding: utf-8 -*-
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
-import ecran1
-import ecran2
-import ecran3
+from . import ecran1
+from . import ecran2
+from . import ecran3
 
 def home2(request):
 	"""Test"""
