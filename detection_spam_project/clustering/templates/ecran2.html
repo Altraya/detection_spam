@@ -22,6 +22,40 @@
 		    
 		</div>
 
+		<div class="row cells1">
+			{% block tableauStats %}
+				<table class="table">
+			    <thead>
+			        <tr>
+			        	<th class="sortable-column sort-desc">
+				        	Nom	
+				        </th>
+				        <th class="sortable-column sort-desc">
+				        	Min	
+				        </th>
+				        <th class="sortable-column sort-desc">
+				        	Max	
+				        </th>
+				        <th class="sortable-column sort-desc">
+				        	Moyenne	
+				        </th>
+			        	<th class="sortable-column sort-desc">
+				        	Ecart-type	
+				        </th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	{% for name in nameColumns %}
+				        <tr>
+				        	<td>{{ name }}</td>
+				        	
+				        </tr>
+			        {% endfor %}
+							    	
+			    </tbody>
+			</table>
+			{% endblock %}
+		</div>
 		<div class="row cells2">
 			
 			<div class="cell">
