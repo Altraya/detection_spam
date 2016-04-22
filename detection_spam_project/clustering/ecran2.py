@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from clustering.form import ScreenOneForm
 from clustering.modelStatic import Stats
 from . import ecran1
+import json
 import csv
 import re
 
@@ -25,8 +26,8 @@ def view_screen(request):
 			resultNormalize = normalizeMe(idColumns, fichier)
 			#tableau contenant des objets Stats pour pouvoir remplir correctement la vue
 			tabObjectStats = matchStats(resultNormalize, tabNameColumns)
-		
-			return render(request, 'ecran2.html', {'id_screen': 2, 'objetsStats' : tabObjectStats})
+
+			return render(request, 'ecran2.html', {'id_screen': 2, 'objetsStats' : tabObjectStats, 'tabStatsRaw' : resultNormalize})
 
 	else: #si on a pas bien valider le formulaire, on retourne sur l'ecran 1 pour le faire
 		return render(request, 'ecran1.html', {'id_screen': 1}) 

@@ -30,6 +30,9 @@ class Stats:
 	def _get_ecart_type(self):
 		return self._ecart_type
 
+	def _get__normalizedColumn(self):
+		return self._normalizedColumn
+
 	def _set_nom(self, newName):
 		self._nom = newName
 
@@ -69,4 +72,6 @@ class Stats:
 		self._set_moyenne(self.doMoyenne(myList))
 		self._set_ecart_type(self.doEcartType(myList))
 
-	
+	def to_JSON(self):
+		return json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4)
