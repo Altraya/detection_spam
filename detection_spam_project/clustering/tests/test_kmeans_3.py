@@ -9,7 +9,6 @@ from clustering.kmeans.kmeans_clusterer import KMeanClusterer
 from clustering.tests.normalizer import Normalizer
 import clustering.kmeans.kmeans_clusterer as km
 from django.test import TestCase
-from test.inspect_fodder import spam
 import math
 
 

@@ -118,7 +118,7 @@ class Cluster(object):
         print(str(to_ex)+" observations to extract.")
         
         sorted_obs = sorted(self.observations, key= lambda obs : self.distanceToCentroid(obs))
-        deviants = [self.observations[n] for n in range(to_ex)]
+        deviants = [self.observations[n] for n in range(int(to_ex))]
         return deviants
                  
     def distanceToCentroid(self, obs):
